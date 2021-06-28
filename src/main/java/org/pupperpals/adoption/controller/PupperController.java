@@ -23,7 +23,9 @@ public class PupperController {
     }
 
     @PostMapping("/pupper")
-    public void addPupper(@RequestBody Pupper p) {
+    public Pupper addPupper(@RequestBody Pupper p) {
+
         service.addPupper(p);
+        return p;
     }
 }
