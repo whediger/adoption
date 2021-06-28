@@ -29,6 +29,7 @@ public class PupperController {
     @PatchMapping("/pupper/{id}")
     public ResponseEntity<Pupper> updatePupper(@RequestBody Pupper p, @PathVariable long id) {
             service.updatePupper(p, id);
-            return new ResponseEntity(service.updatePupper(p, id), HttpStatus.NO_CONTENT);
+            Pupper result = service.updatePupper(p, id).orElse(null);
+            return new ResponseEntity(result, HttpStatus.OK);
     }
 }

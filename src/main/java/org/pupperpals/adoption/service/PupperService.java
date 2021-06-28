@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PupperService {
@@ -22,18 +23,17 @@ public class PupperService {
         repo.save(p);
     }
 
-    public Pupper updatePupper(Pupper p, long id) {
+    public Optional<Pupper> updatePupper(Pupper p, long id) {
         if(p.getName() == null && p.getBreed() == null) {}
         else if(p.getName() != null && p.getBreed() == null)
             repo.updatePupperName(p.getName(), id);
         else if(p.getName() == null && p.getBreed() != null)
             repo.updatePupperBreed(p.getBreed(), id);
         else {
-            p.setId(id);
-            repo.save(p);
+            repo.updatePupperNameBreed(p.getBreed(), p.getName(), id);
         }
 
 
-        return repo.getOne(id);
+        return repo.findById(id);
     }
 }

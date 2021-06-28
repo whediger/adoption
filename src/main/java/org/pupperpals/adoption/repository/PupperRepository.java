@@ -20,4 +20,9 @@ public interface PupperRepository extends JpaRepository<Pupper, Long> {
     @Query("Update Pupper p set p.breed = :breed where p.id = :id")
     void updatePupperBreed(@Param("breed") String breed, @Param("id") Long id);
 
+    @Transactional
+    @Modifying
+    @Query("Update Pupper p set p.breed = :breed, p.name = :name where p.id = :id")
+    void updatePupperNameBreed(@Param("breed") String breed, @Param("name") String name, @Param("id") Long id);
+
 }
