@@ -21,4 +21,9 @@ public class PupperService {
     public void addPupper(Pupper p) {
         repo.save(p);
     }
+
+    public void updatePupper(Pupper p, long id) {
+        if(p.getName() != null && p.getBreed() == null)
+            repo.updatePupperName(p.getName(), id);
+    }
 }

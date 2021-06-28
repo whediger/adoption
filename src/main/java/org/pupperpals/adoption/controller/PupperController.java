@@ -6,10 +6,7 @@ import org.pupperpals.adoption.service.PupperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PupperController {
@@ -27,5 +24,11 @@ public class PupperController {
 
         service.addPupper(p);
         return p;
+    }
+
+    @PatchMapping("/pupper/{id}")
+    public Pupper updatePupper(@RequestBody Pupper p, @PathVariable long id) {
+            service.updatePupper(p, id);
+            return p;
     }
 }
