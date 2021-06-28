@@ -1,6 +1,5 @@
 version: "3.9"
 services:
-<<<<<<< HEAD
   pupper_pals_db:
     image: postgres
     ports:
