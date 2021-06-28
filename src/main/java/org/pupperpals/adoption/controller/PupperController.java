@@ -20,15 +20,15 @@ public class PupperController {
     }
 
     @PostMapping("/pupper")
-    public Pupper addPupper(@RequestBody Pupper p) {
+    public ResponseEntity<Pupper> addPupper(@RequestBody Pupper p) {
 
         service.addPupper(p);
-        return p;
+        return new ResponseEntity(p, HttpStatus.CREATED);
     }
 
     @PatchMapping("/pupper/{id}")
-    public Pupper updatePupper(@RequestBody Pupper p, @PathVariable long id) {
+    public ResponseEntity<Pupper> updatePupper(@RequestBody Pupper p, @PathVariable long id) {
             service.updatePupper(p, id);
-            return p;
+            return new ResponseEntity(service.updatePupper(p, id), HttpStatus.NO_CONTENT);
     }
 }
